@@ -30,6 +30,7 @@ class MainActivity : ComponentActivity() {
         }
 
         lifecycleScope.launch(Dispatchers.IO) {
+            // 직렬 처리
             val time: Long = measureTimeMillis {
                 val result1: String = network1()
                 val result2 = network2()
