@@ -34,10 +34,20 @@ class MainActivity : ComponentActivity() {
             val time: Long = measureTimeMillis {
                 val result1: String = network1()
                 val result2 = network2()
-                Log.d(TAG, "결과1 : $result1")
-                Log.d(TAG, "결과2 : $result2")
+                Log.d(TAG, "직렬 결과1 : $result1")
+                Log.d(TAG, "직렬 결과2 : $result2")
             }
-            Log.d(TAG, "시간 : $time")
+            Log.d(TAG, "직렬 시간 : $time")
+
+            // 병렬 처리
+            val time2: Long = measureTimeMillis {
+                val result1: Deferred<String> = async { network1() }
+                val result2 = async { network2() }
+                Log.d(TAG, "병렬 결과1 : ${result1.await()}")
+                Log.d(TAG, "병렬 결과2 : ${result2.await()}")
+            }
+            Log.d(TAG, "병렬 시간 : $time2")
+
         }
 
     }
