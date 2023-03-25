@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import org.techtown.mycoroutine.MainActivity.Companion.TAG
@@ -27,8 +28,9 @@ class MainViewModel : ViewModel() {
 
     private fun collectFlow() {
         viewModelScope.launch {
-            countFlow.collect {
-                Log.d(TAG, "collect: $count")
+            countFlow.collectLatest {
+                delay(4000)
+                Log.d(TAG, "collect: $it")
             }
         }
     }
