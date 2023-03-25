@@ -34,4 +34,10 @@ class MainViewModel : ViewModel() {
             }
         }
     }
+
+    fun factorial(k: Int): Int {
+        tailrec fun factTail(m: Int, n: Int): Int =
+            if (m == 0) n else factTail(m - 1, m * n)
+        return factTail(k, 1)
+    }
 }
