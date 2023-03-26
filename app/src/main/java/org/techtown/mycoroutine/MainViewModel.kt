@@ -28,6 +28,11 @@ class MainViewModel : ViewModel() {
 
     private fun collectFlow() {
         viewModelScope.launch {
+//            countFlow.collect {
+//                delay(4000)
+//                Log.d(TAG, "collect: $it")
+//            }
+
             countFlow.collectLatest {
                 delay(4000)
                 Log.d(TAG, "collect: $it")
