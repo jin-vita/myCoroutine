@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
                 Box(modifier = Modifier.fillMaxSize()) {
                     Text(
                         text = "${countState.value}",
-                        fontSize = 60.sp,
+                        fontSize = 70.sp,
                         modifier = Modifier.align(Alignment.Center)
                     )
                 }
